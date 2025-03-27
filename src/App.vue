@@ -15,14 +15,16 @@ function reset() {
   count.value = 0
 }
 const texte = ref('')
-const age = ref(null)
+const nombre = ref(null)
+const checked = ref(false)
+const selected = ref('')
 
 </script>
 
 <template>
   <main>
-    <div class="form-wrapper">
-    <h2>Formulaire Vue.js</h2>
+    <div>
+    <h2>Formulaire</h2     >
     
     <form @submit.prevent>
       <div>
@@ -31,21 +33,33 @@ const age = ref(null)
       </div>
 
       <div>
-        <label for="age">Nombre : </label>
-        <input id="age" type="number" v-model.number="age" />
+        <label for="nombre">Nombre : </label>
+        <input id="nombre" type="number" v-model.number="nombre" />
       </div>
-    </form>
-    <input type="checkbox" id="checkbox" v-model="checked" />
-    <label for="checkbox">{{ checked }}</label>
-    <input type="checkbox" v-model="toggle" true-value="yes" false-value="no" />
-    
-
-    <div class="result">
-      <h3>Valeurs saisies :</h3>
+      <div class="result">
+      <h3>Moustaches :</h3>
       <p>Nom : {{ nom }}</p>
-      <p>Âge : {{ age }}</p>
+      <p>Nombre : {{ nombre }}</p>
     </div>
+ 
+    </form>
+    <div>
+      <input type="checkbox" id="checkbox" v-model="checked" />
+      <p v-if="checked"> la case est coché</p>
+    </div>
+    <div>Selected: {{ selected }}</div>
+
+    <div>
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+
   </div>
+
+  
 
     <button @click="increment">
       ajouter
@@ -60,7 +74,7 @@ const age = ref(null)
       {{ count }} 
     </h1>
     
-
+  </div>
 
     
   </main>
